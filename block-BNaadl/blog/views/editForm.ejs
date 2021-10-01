@@ -4,37 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-    <h2>Add Aritcle</h2>
-    <form action="/articles/" method="POST">
+    <h3>Edit Article</h3>
+    <form action="/articles/<%= article.id %>" method="POST">
       <input
         type="text"
-        name="Title"
+        name="title"
         placeholder="title"
-        value="<%= article.title %>"
+        value="<% article.tittle%>"
       />
       <input
         type="text"
         name="description"
         placeholder="description"
-        value="<%= article.description %>"
+        value="<% article.description%>"
       />
       <input
         type="text"
-        name="Tag"
+        name="tag"
         placeholder="tag"
-        value="<%= article.tag %>"
+        value="<% article.tags%>"
       />
       <input
         type="text"
         name="author"
         placeholder="author"
-        value="<%= article.author %>"
+        value="<% article.author%>"
       />
 
-      <input type="sumbit" value="Add" />
+      <input type="submit" value="Add Article" />
     </form>
   </body>
 </html>
