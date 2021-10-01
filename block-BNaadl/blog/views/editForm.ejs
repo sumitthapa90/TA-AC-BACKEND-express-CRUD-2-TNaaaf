@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <h2>Add Aritcle</h2>
+    <form action="/articles/" method="POST">
+      <input
+        type="text"
+        name="Title"
+        placeholder="title"
+        value="<%= article.title %>"
+      />
+      <input
+        type="text"
+        name="description"
+        placeholder="description"
+        value="<%= article.description %>"
+      />
+      <input
+        type="text"
+        name="Tag"
+        placeholder="tag"
+        value="<%= article.tag %>"
+      />
+      <input
+        type="text"
+        name="author"
+        placeholder="author"
+        value="<%= article.author %>"
+      />
+
+      <input type="sumbit" value="Add" />
+    </form>
+  </body>
+</html>
