@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
     <a href="/">Home</a>
-    <div>
-      <a href="/articles/new">Add Articles</a>
-    </div>
 
     <div>
-      <h3>Articles</h3>
-
-     
-
-      <a href=""><button>Edit</button></a>
-      <div>
-        <a href=""><button>Delete</button></a>
-      </div>
+      <span>List of articles</span>
     </div>
+
+    <% articles.forEach(article => { %>
+    <a href="/articles/<%= article.id %>">
+      <h3><%= article.title %></h3>
+      <% }) %>
+    </a>
+    <a href="/articles/new">
+      <button>Add Articles</button>
+    </a>
   </body>
 </html>
