@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h4>Edit Article</h4>
+
+    <form action="/articles/<%= article.id %>" method="POST">
+      <input
+        type="text"
+        name="title"
+        ,
+        placeholder="Add title"
+        value="<%= article.title %>"
+      />
+      <textarea name="description" placeholder="Add Description">
+        <%= article.description %>
+      </textarea>
+      <input
+        type="text"
+        name="tag"
+        placeholder="tag"
+        value="<%= article.tag %>"
+      />
+      <input
+        type="text"
+        name="author"
+        placeholder="author"
+        value="<%= article.author %>"
+      />
+      <input type="submit" value="ADD" />
+    </form>
+  </body>
+</html>

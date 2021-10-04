@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Sindle Articles</h3>
+    <div>
+      <h4><%= article.title %></h4>
+      <h4><%= article.description %></h4>
+      <h4><%= article.tags %></h4>
+      <h4><%= article.author %></h4>
+      <h4>Likes: <%= article.like ? article.like: 0 %></h4>
+    </div>
+
+    <div>
+      <a href="/articles/<%= article.id %>"><button>like</button></a>
+    </div>
+    <div>
+      <a href="/articles/<%= article.id %>/edit"><button>edit</button></a>
+    </div>
+    <div>
+      <a href="/articles/<%= article.id %>/delete"><button>Delete</button></a>
+    </div>
+    <div>
+      <a href="/"><button>Home</button></a>
+    </div>
+
+    <section class="comments">
+      <span>Comments</span>
+
+      <form action="/articles/<%= article.id %>/comments" method="POST">
+        <textarea name="content" placeholder="Comments"></textarea>
+        <input type="submit" value="Add Comments" />
+      </form>
+    </section>
+
+    <h3>Comments</h3>
+    <div>
+      <% comments.forEach(comment =>{%>
+      <div>
+        <p><%= comment.content %></p>
+      </div>
+
+      <a href="/comments/<%= comment.id %>/edit"><button>Edit</button></a>
+      <a href=""><button>Delete</button></a>
+      <% })%>
+    </div>
+  </body>
+</html>
