@@ -36,7 +36,6 @@ router.get("/:id", (req, res, next) => {
 router.get("/:id/edit", (req, res, next) => {
   var id = req.params.id;
   Article.findById(id, (err, article) => {
-    article.tag = article.tag.join();
     if (err) return next(err);
     res.render("editForm", { article });
   });
