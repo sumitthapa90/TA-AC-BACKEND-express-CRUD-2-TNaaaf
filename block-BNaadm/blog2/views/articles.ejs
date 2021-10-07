@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <a href="/">Home</a>
+
+    <div>
+      <h2>Articles List</h2>
+    </div>
+
+    <section class="article-page">
+      <% articles.forEach(article =>{ %>
+      <a href="/articles/<%= article.id%>"><h3><%= article.title%></h3></a>
+      <% }) %>
+    </section>
+
+    <a href="/articles/new">Add Articles</a>
+  </body>
+</html>
