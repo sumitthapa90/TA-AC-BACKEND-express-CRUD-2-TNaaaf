@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost/blog2", (err) => {
 
 var indexRouter = require("./routes/index");
 var articlesRouter = require("./routes/articles");
-var commentsRouter = require("./routes/comments")
+var commentsRouter = require("./routes/comments");
 
 var app = express();
 

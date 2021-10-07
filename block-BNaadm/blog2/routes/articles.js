@@ -25,13 +25,20 @@ router.post("/", (req, res, nex) => {
   });
 });
 
-// router.get("/:id", (req, res, next) => {
-//   var id = req.params.id;
-//   Article.findById(id, (err, article) => {
-//     if (err) return next(err);
-//     res.render("singleArticle", { article });
-//   });
-// });
+router.get("/:id", (req, res, next) => {
+  var id = req.params.id;
+  // Article.findById(id, (err, article) => {
+  //   if (err) return next(err);
+  //   res.render("singleArticle", { article });
+  // });
+  
+  Article.findById(id)
+    .populate("comments")
+    .exec((err, article) => {
+      if (err) return next(err);
+      res.render("singleArticle", { article });
+    });
+});
 
 router.get("/:id/edit", (req, res, next) => {
   var id = req.params.id;
@@ -41,9 +48,10 @@ router.get("/:id/edit", (req, res, next) => {
   });
 });
 //increment
-router.get("/:id/like", (req, res, next) => {
+router.get("/:id/likes", (req, res, next) => {
   var id = req.params.id;
-  Article.findByIdAndUpdate(id, { $inc: { like: 1 } }, (err, article) => {
+  Article.findByIdAndUpdate(id, { $inc: { likes: 1 } }, (err, article) => {
+    if (err) return next(err);
     res.redirect("/articles/" + id);
   });
 });
@@ -64,24 +72,22 @@ router.get("/:id/delete", (req, res, next) => {
   });
 });
 
-router.post("/:id/comments", (req, res, next) => {
-  var id = req.params.id;
-  req.body.articalId = id;
+//comments
+router.post("/:articleId/comments", (req, res, next) => {
+  var articleId = req.params.articleId;
+  console.log(req.body);
+  req.body.articleId = articleId;
   Comment.create(req.body, (err, comment) => {
     if (err) return next(err);
-    res.redirect("/articles/" + id);
+    res.redirect("/articles/" + articleId);
+    Article.findByIdAndUpdate(
+      articleId,
+      { $push: { comments: comment.id } },
+      (err, article) => {
+        if (err) return next(err);
+        res.render("/articles/" + articleId);
+      }
+    );
   });
 });
-
-router.get("/:id", (req, res, next) => {
-  var id = req.params.id;
-  Article.findById(id, (err, article) => {
-    if (err) return next(err);
-    Comment.find({ articalId: id }, (err, comments) => {
-      if (err) return next(err);
-      res.render("singleArticle", { article, comments });
-    });
-  });
-});
-
 module.exports = router;
