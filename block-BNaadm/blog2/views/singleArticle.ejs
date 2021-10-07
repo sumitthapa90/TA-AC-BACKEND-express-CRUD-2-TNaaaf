@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
     <h3>Sindle Articles</h3>
@@ -12,11 +13,11 @@
       <h4><%= article.description %></h4>
       <h4><%= article.tags %></h4>
       <h4><%= article.author %></h4>
-      <h4>Likes: <%= article.like ? article.like: 0 %></h4>
+      <h4>Likes: <%= article.likes ? article.likes: 0 %></h4>
     </div>
 
     <div>
-      <a href="/articles/<%= article.id %>"><button>like</button></a>
+      <a href="/articles/<%= article.id %>/likes"><button>like</button></a>
     </div>
     <div>
       <a href="/articles/<%= article.id %>/edit"><button>edit</button></a>
@@ -32,20 +33,21 @@
       <span>Comments</span>
 
       <form action="/articles/<%= article.id %>/comments" method="POST">
-        <textarea name="content" placeholder="Comments"></textarea>
+        <textarea name="text" placeholder="Comments"></textarea>
+        <input type="text" name="author" placeholder="author" />
         <input type="submit" value="Add Comments" />
       </form>
     </section>
 
     <h3>Comments</h3>
+
     <div>
-      <% comments.forEach(comment =>{%>
-      <div>
-        <p><%= comment.content %></p>
-      </div>
+      <% article.comments.forEach(comment =>{%>
+      <p><%= comment.text %></p>
+      <p><%= comment.author %></p>
 
       <a href="/comments/<%= comment.id %>/edit"><button>Edit</button></a>
-      <a href=""><button>Delete</button></a>
+      <a href="/comments/<%= comment.id %>/delete"><button>Delete</button></a>
       <% })%>
     </div>
   </body>
