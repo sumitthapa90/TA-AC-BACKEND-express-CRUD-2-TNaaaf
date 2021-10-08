@@ -146,11 +146,12 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
-  background-image: linear-gradient(to right, #42275a , #734b6d);
+  background-image: linear-gradient(to right, #42275a, #734b6d);
 }
 
 a {
   color: #00b7ff;
+  text-decoration: none;
 }
 
 header {
@@ -160,21 +161,48 @@ header {
   text-align: center;
   font-weight: 600;
 }
-h2{
+h2 {
   color: chartreuse;
   margin-bottom: 1rem;
 }
+
 .home-page {
   text-align: center;
   font-size: 1.3rem;
 }
-.image{
+.image {
   text-align: center;
   margin-top: 1rem;
 }
-.list{
-  background-color: red;
+
+.add-form {
+  width: 300px;
+  background-color: #00b7ff;
+  font-size: 2rem;
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  border-radius: 10px;
 }
-.form-sec{
-  width: 600px;
+
+input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  width: 200px;
+}
+textarea {
+  border-radius: 10px;
+}
+.book-page {
+  margin: 0 auto;
+  border: 2px solid white;
+  width: 500px;
+}
+h4 {
+  font-size: 1.2rem;
+}
+.single{
+color: white;
 }

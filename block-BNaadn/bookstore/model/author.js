@@ -7,7 +7,7 @@ var authorSchema = new Schema(
     name: { type: String },
     email: { type: String, required: true, match: /@/ },
     country: String,
-    bookId: [{ type: Schema.Types.ObjectId, ref: "Author" }],
+    bookId: [{ type: Schema.Types.ObjectId }],
   },
   { timestamps: true }
 );

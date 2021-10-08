@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="stylesheets/style.css" />
   </head>
   <body>
-    <div>
+    <header>
       <a href="/">BOOK STORE</a>
+      <h2>Book Library</h2>
+      <div class="book-page">
+        <% book.forEach(books =>{%>
+        <a href="/books/<%= books.id%>"><h4><%= books.title%></h4></a>
 
-      <div class="list">
-        <a href=""><h2>Title</h2></a>
+        <%})%>
       </div>
       <div>
-        <a href="/books/new"><button>Add Books</button></a>
+        <a href="/books/new"><button>ADD BOOKS</button></a>
+        <a href="/authors"><button>ADD AUTHORS</button></a>
       </div>
-    </div>
+    </header>
   </body>
 </html>

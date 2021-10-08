@@ -12,12 +12,47 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/new", (req, res) => {
-  res.render("AddBook");
+  res.render("bookCreateForm");
 });
 
 router.post("/", (req, res, next) => {
-  var id = req.params.id;
-  Book.create(id, (err, book) => {
+  let data = req.body;
+  console.log(data);
+  Book.create(data, (err, book) => {
+    console.log(data);
+    if (err) return next(err);
+    res.redirect("/books");
+  });
+});
+
+router.get("/:id", (req, res, next) => {
+  let id = req.params.id;
+  Book.findById(id, (err, book) => {
+    if (err) return next(err);
+    console.log(book);
+    res.render("singleBook", { book: book });
+  });
+});
+
+router.get("/:id/edit", (req, res, next) => {
+  let id = req.params.id;
+  Book.findById(id, (err, books) => {
+    if (err) return next(err);
+    res.render("editForm", { books });
+  });
+});
+
+router.post("/:id", (req, res, next) => {
+  let id = req.params.id;
+  Book.findByIdAndUpdate(id, req.body, (err, book) => {
+    if (err) return next(err);
+    res.redirect("/books/" + id);
+  });
+});
+
+router.get("/:id/delete", (req, res, next) => {
+  let id = req.params.id;
+  Book.findByIdAndDelete(id, (err, book) => {
     if (err) return next(err);
     res.redirect("/books");
   });

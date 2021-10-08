@@ -4,8 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h3>single</h3>
+    <div class="single">
+      <h3>single</h3>
+      <h4><%= book.title%></h4>
+      <h4><%= book.summary%></h4>
+      <h4><%= book.pages%></h4>
+      <h4><%= book.publication%></h4>
+      <h4><%= book.cover_image%></h4>
+      <h4><%= book.category%></h4>
+    </div>
+
+    <div>
+      <a href="/books/<%= book.id%>/edit"><button>Edit</button></a>
+      <a href="/books/<%= book.id%>/delete"><button>Delete</button></a>
+    </div>
   </body>
 </html>
