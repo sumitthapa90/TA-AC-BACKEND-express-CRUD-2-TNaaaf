@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="/">BOOK STORE</a>
+      <h2>Book Library</h2>
+      <div class="book-page">
+        <% book.forEach(books =>{%>
+        <a href="/books/<%= books.id%>"><h4><%= books.title%></h4></a>
+
+        <%})%>
+      </div>
+      <div>
+        <a href="/books/new"><button>ADD BOOKS</button></a>
+        <a href="/authors"><button>ADD AUTHORS</button></a>
+      </div>
+    </header>
+  </body>
+</html>
