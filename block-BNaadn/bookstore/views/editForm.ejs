@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="add-form">
+      <h3>New Form</h3>
+      <form action="/books/<%= books.id %>" method="POST">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Title"
+          value="<%= books.title%>"
+        />
+        <textarea name="summary" id="summary" cols="30" rows="5">
+            <%= books.summary%>
+        </textarea>
+        <input
+          type="number"
+          name="pages"
+          id="pages"
+          placeholder="Pages"
+          value="<%= books.pages%>"
+        />
+        <input
+          type="text"
+          name="publication"
+          id="publication"
+          placeholder="Publication"
+          value="<%= books.publication%>"
+        />
+
+        <input
+          type="text"
+          name="cover_image"
+          id="cover_image"
+          placeholder="Image url"
+          value="<%= books.cover_image%>"
+        />
+
+        <input
+          type="text"
+          name="author"
+          placeholder="Author"
+          value="<%= books.author%>"
+        />
+
+        <select name="category">
+          <option value="select-category">Select-Category</option>
+          <option value="fiction">Fiction</option>
+          <option value="adventure">adventure</option>
+          <option value="technology">technology</option>
+          <option value="motivation">motivation</option>
+        </select>
+
+        <a href="/books/<%= books.id%>/update"><button>Update</button></a>
+      </form>
+    </div>
+  </body>
+</html>
